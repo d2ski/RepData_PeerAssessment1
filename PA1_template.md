@@ -3,18 +3,19 @@
 ## Loading and preprocessing the data
 
 ```r
-data <- read.csv(unz("activity.zip", "activity.csv"), colClasses = c("numeric",                                                               "character", "numeric"))
+data <- read.csv(unz("activity.zip", "activity.csv"), colClasses =
+                     c("numeric", "character", "numeric"))
 ```
 
 `dplyr` and `timeDate` packages are necessary.
 
 
 ```r
-Sys.setlocale("LC_TIME","English_United States.1252")
+Sys.setlocale("LC_ALL","English_United States.1252")
 ```
 
 ```
-## [1] "English_United States.1252"
+## [1] "LC_COLLATE=English_United States.1252;LC_CTYPE=English_United States.1252;LC_MONETARY=English_United States.1252;LC_NUMERIC=C;LC_TIME=English_United States.1252"
 ```
 
 ```r
@@ -26,11 +27,11 @@ library(dplyr)
 ## 
 ## Attaching package: 'dplyr'
 ## 
-## Следующие объекты скрыты from 'package:stats':
+## The following objects are masked from 'package:stats':
 ## 
 ##     filter, lag
 ## 
-## Следующие объекты скрыты from 'package:base':
+## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union
 ```
@@ -219,11 +220,14 @@ new.data.weekends <- new.data %.%
 ```r
 # Ploting
 par(mfrow = c(2,1))
-plot(new.data.weekdays$interval, new.data.weekdays$mean, type = "l", main = "Time Series Plot per
-     5-minute interval (weekdays)", xlab = "5-minute intervals", ylab = "Average steps")
+par(cex = 0.6)
+par(mar = c(4,4,0,0), oma = c(1,1,1,1))
 
-plot(new.data.weekends$interval, new.data.weekends$mean, type = "l", main = "Time Series Plot per
-     5-minute interval (weekends)", xlab = "5-minute intervals", ylab = "Average steps")
+plot(new.data.weekdays$interval, new.data.weekdays$mean, type = "l", xlab = "5-minute intervals", ylab = "Average steps")
+mtext("weekdays", side = 3, line = -1, adj = 0.1, cex = 0.6)
+
+plot(new.data.weekends$interval, new.data.weekends$mean, type = "l", xlab = "5-minute intervals", ylab = "Average steps")
+mtext("weekends", side = 3, line = -1, adj = 0.1, cex = 0.6)
 ```
 
 ![plot of chunk plots](figure/plots.png) 
