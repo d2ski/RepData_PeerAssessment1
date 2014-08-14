@@ -1,9 +1,4 @@
 base
-datasets
 dplyr
-graphics
-grDevices
 knitr
-methods
-stats
-utils
+timeDate
