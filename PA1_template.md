@@ -10,9 +10,8 @@ data <- read.csv(unz("activity.zip", "activity.csv"), colClasses =
 `dplyr` and `timeDate` packages are necessary.
 
 
+
 ```r
-Sys.setlocale("LC_ALL","English_United States.1252")
-Sys.setenv(TZ='GMT')
 library(dplyr)
 ```
 
@@ -79,8 +78,7 @@ data2 <- data %.%
     group_by(interval) %.%
     summarise(mean = mean(steps, na.rm = T))
 plot(data2$interval, data2$mean, type = "l", main = "Time Series Plot per
-     5-minute interval", xlab = "5-minute intervals", ylab = "Average number of
-     steps taken")
+     5-minute interval", xlab = "5-minute intervals", ylab = "Average steps")
 ```
 
 ![plot of chunk timeseries](figure/timeseries.png) 
@@ -213,14 +211,14 @@ new.data.weekends <- new.data %.%
 ```r
 # Ploting
 par(mfrow = c(2,1))
-par(cex = 0.7)
+par(cex = 0.8)
 par(mar = c(4,4,1,1), oma = c(1,1,1,1))
 
 plot(new.data.weekdays$interval, new.data.weekdays$mean, type = "l", xlab = "5-minute intervals", ylab = "Average steps")
-mtext("weekdays", side = 3, line = -1, adj = 0.1, cex = 0.7)
+mtext("weekdays", side = 3, line = -1, adj = 0.1, cex = 0.8)
 
 plot(new.data.weekends$interval, new.data.weekends$mean, type = "l", xlab = "5-minute intervals", ylab = "Average steps")
-mtext("weekends", side = 3, line = -1, adj = 0.1, cex = 0.7)
+mtext("weekends", side = 3, line = -1, adj = 0.1, cex = 0.8)
 ```
 
 ![plot of chunk plots](figure/plots.png) 
