@@ -12,13 +12,6 @@ data <- read.csv(unz("activity.zip", "activity.csv"), colClasses =
 
 ```r
 Sys.setlocale("LC_ALL","English_United States.1252")
-```
-
-```
-## [1] "LC_COLLATE=English_United States.1252;LC_CTYPE=English_United States.1252;LC_MONETARY=English_United States.1252;LC_NUMERIC=C;LC_TIME=English_United States.1252"
-```
-
-```r
 Sys.setenv(TZ='GMT')
 library(dplyr)
 ```
@@ -220,14 +213,14 @@ new.data.weekends <- new.data %.%
 ```r
 # Ploting
 par(mfrow = c(2,1))
-par(cex = 0.6)
-par(mar = c(4,4,0,0), oma = c(1,1,1,1))
+par(cex = 0.7)
+par(mar = c(4,4,1,1), oma = c(1,1,1,1))
 
 plot(new.data.weekdays$interval, new.data.weekdays$mean, type = "l", xlab = "5-minute intervals", ylab = "Average steps")
-mtext("weekdays", side = 3, line = -1, adj = 0.1, cex = 0.6)
+mtext("weekdays", side = 3, line = -1, adj = 0.1, cex = 0.7)
 
 plot(new.data.weekends$interval, new.data.weekends$mean, type = "l", xlab = "5-minute intervals", ylab = "Average steps")
-mtext("weekends", side = 3, line = -1, adj = 0.1, cex = 0.6)
+mtext("weekends", side = 3, line = -1, adj = 0.1, cex = 0.7)
 ```
 
 ![plot of chunk plots](figure/plots.png) 
